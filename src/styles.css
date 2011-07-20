@@ -1,0 +1,27 @@
+@namespace "library://ns.adobe.com/flex/spark";
+
+ActionBar 
+{
+	skinClass: ClassReference("skins.ActionBarSkin");
+}
+
+TabbedViewNavigatorApplication
+{
+	backgroundColor: #000000;
+}
+
+View
+{
+	backgroundColor: #DCDCDC;
+}
+
+List
+{
+	alternatingItemColors: #F0F0F0,#DCDCDC;
+	
+}
+
+global
+{
+	fontSize: 20;
+}

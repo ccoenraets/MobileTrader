@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" xmlns:views="views.*"
+		creationComplete="roomURL.text=FlexGlobals.topLevelApplication.roomURL">
+
+	<fx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+			
+			import mx.core.FlexGlobals;
+			
+			import spark.managers.PersistenceManager;
+			
+			protected var persistenceManager:PersistenceManager = new PersistenceManager();
+
+			protected function save():void
+			{
+				FlexGlobals.topLevelApplication.roomURL = roomURL.text;
+				persistenceManager.setProperty("roomURL", roomURL.text);
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:navigationContent>
+		<s:Button icon="@Embed('assets/back.png')" click="navigator.popView();" height="55"/>
+	</s:navigationContent>
+	
+	<s:layout>
+		<s:VerticalLayout paddingTop="20" paddingLeft="20" paddingRight="20" paddingBottom="20"/>
+	</s:layout>
+	
+	<s:Label text="Collaboration Services Room URL:" top="20" left="20" right="20"/>
+
+	<s:TextInput id="roomURL" width="100%" change="save()"/>
+	
+	<s:Label width="100%">
+		<s:text>
+MobileTrader uses LiveCycle Collaboration Service (LCCS) to enable real time collaboration between users of the application. 
+This includes videoconference, voice over IP, and application collaboration (UI synchronization). 
+You need to specify a collaboration room URL to enable this feature. If you don't have an LCCS account, you can sign up for a free trial at https://afcs.acrobat.com/.
+You will then be able to create a room and enable this feature of MobileTrader.
+		</s:text>
+	</s:Label> 
+
+</s:View>

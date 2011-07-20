@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+								  xmlns:s="library://ns.adobe.com/flex/spark"
+								  xmlns:controller="controller.*"
+								  splashScreenImage="@Embed('assets/splash.jpg')" splashScreenScaleMode="stretch"
+								  applicationComplete="applicationComplete()">
+	<fx:Script>
+		<![CDATA[
+			import spark.managers.PersistenceManager;
+			
+			/**
+			 * The LiveCycle Collaboration Service (LCCS) room URL used for the real time collaboration feature
+			 * of this application (real time collaboration with financial advisor).
+			 */
+			public var roomURL:String;
+			
+			protected function applicationComplete():void
+			{
+				var persistenceManager:PersistenceManager = new PersistenceManager();
+				if (persistenceManager.load())
+				{
+					var url:Object = persistenceManager.getProperty("roomURL");
+					if (url)
+						roomURL = url.toString();
+				}
+			}
+
+			
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Style source="styles.css"/>
+	
+	<fx:Declarations>
+		<controller:Feed id="feed"/>
+	</fx:Declarations>
+	
+	<s:ViewNavigator label="Assets" firstView="views.AssetsView" width="100%" height="100%" icon="@Embed('assets/money_48.png')"/>
+	<s:ViewNavigator label="Watch" firstView="views.WatchListView" width="100%" height="100%" icon="@Embed('assets/chart_line_48.png')"/>
+	<s:ViewNavigator label="Alerts" firstView="views.AlertsView" width="100%" height="100%" icon="@Embed('assets/alarm_on_48.png')"/>
+	<s:ViewNavigator label="Advisor" firstView="views.AdvisorView" width="100%" height="100%" icon="@Embed('assets/man_48.png')"/>
+	
+</s:TabbedViewNavigatorApplication>

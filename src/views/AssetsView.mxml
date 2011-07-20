@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Christophe Coenraets, http://coenraets.org -->
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:charts="charts.*" 
+		xmlns:views="views.*"
+		destructionPolicy="never" xmlns:components="components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+
+			override public function setCurrentState(stateName:String, playTransition:Boolean=true):void
+			{
+				if (stateName == "landscape")
+				{
+					if (FlexGlobals.topLevelApplication.height<500)
+						super.setCurrentState("landscapeSmall", playTransition);
+					else if (FlexGlobals.topLevelApplication.height<600)
+						super.setCurrentState("landscapeMedium", playTransition);
+					else
+						super.setCurrentState("landscapeLarge", playTransition);
+				}
+				else
+				{
+					super.setCurrentState(stateName, playTransition);
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:CurrencyFormatter id="cf" useCurrencySymbol="true" fractionalDigits="0" />
+		<s:NumberFormatter id="nf" fractionalDigits="2" />
+	</fx:Declarations>
+
+	<s:states>
+		<s:State name="portrait"/>
+		<s:State name="landscape"/>
+		<s:State name="landscapeLarge"/>
+		<s:State name="landscapeMedium"/>
+		<s:State name="landscapeSmall"/>
+		<s:State name="landscapeHistory"/>
+	</s:states>
+	
+	<s:Label text="Summary" top="16" left="20" fontSize="24" excludeFrom="landscapeMedium"
+			 color="#646464" 
+			 color.landscapeHistory="#999999"
+			 click.landscapeHistory="currentState='landscapeSmall'"/>
+
+	<components:AssetsSummary id="assetsSummary" top="50" top.landscapeMedium="16" left="20" right="20" excludeFrom="landscapeHistory"/>
+
+	<s:Label text="Performance History" top="240" left="20" fontSize="24" excludeFrom="landscapeMedium"
+			 color="#646464"
+			 color.landscapeSmall="#999999"
+			 mouseDown.landscapeSmall="currentState='landscapeHistory'"
+			 top.landscapeSmall="16" left.landscapeSmall="170" 
+			 top.landscapeHistory="16" left.landscapeHistory="170" />
+	
+	<charts:PortfolioChart id="chart" top="280" top.landscapeMedium="200" left="20" right="20" bottom="28" 
+						   excludeFrom="landscapeSmall" top.landscapeHistory="50" bottom.landscapeMedium="10"/>
+
+	<s:Label bottom="4" text="Swipe/zoom to navigate chart. Rotate device for bigger chart" fontSize="16" color="#AAAAAA" horizontalCenter="0" includeIn="portrait"/>
+	<s:Label bottom="4" text="Swipe/zoom to navigate chart." fontSize="16" color="#AAAAAA" horizontalCenter="0" includeIn="landscapeLarge,landscapeHistory"/>
+	<s:Label bottom="4" text="Rotate device for combined view." fontSize="16" color="#AAAAAA" horizontalCenter="0" includeIn="landscapeSmall"/>
+	
+</s:View>

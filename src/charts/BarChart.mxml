@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Christophe Coenraets, http://coenraets.org -->
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 width="100%" height="163" backgroundColor="#F0F0F0">
+	
+	<s:Line left="0" right="0" top="40">
+		<s:stroke>
+			<s:SolidColorStroke color="#DCDCDC"/>
+		</s:stroke>
+	</s:Line>
+
+	<s:Line left="0" right="0" top="81">
+		<s:stroke>
+			<s:SolidColorStroke color="#DCDCDC"/>
+		</s:stroke>
+	</s:Line>
+
+	<s:Line left="0" right="0" top="122">
+		<s:stroke>
+			<s:SolidColorStroke color="#DCDCDC"/>
+		</s:stroke>
+	</s:Line>
+
+	<s:Line top="0" bottom="0" left="{width/2}">
+		<s:stroke>
+			<s:SolidColorStroke color="#DCDCDC"/>
+		</s:stroke>
+	</s:Line>
+	<s:Line top="0" bottom="0" left="{width/4}">
+		<s:stroke>
+			<s:SolidColorStroke color="#DCDCDC"/>
+		</s:stroke>
+	</s:Line>
+	<s:Line top="0" bottom="0" right="{width/4}">
+		<s:stroke>
+			<s:SolidColorStroke color="#DCDCDC"/>
+		</s:stroke>
+	</s:Line>
+	
+	<s:Rect top="10" left="0" height="20" width="{140000/200000*width}">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="#ec1d00" ratio="0" alpha="1"/>                
+				<s:GradientEntry color="#d01800" ratio="1" alpha="1"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect top="51" left="0" height="20" width="{160000/200000*width}">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="#f14a00" ratio="0" alpha="1"/>                
+				<s:GradientEntry color="#d64100" ratio="1" alpha="1"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect top="91" left="0" height="20" width="{120000/200000*width}">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="#f14a00" ratio="0" alpha="1"/>                
+				<s:GradientEntry color="#d64100" ratio="1" alpha="1"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect top="131" left="0" height="20" width="{100000/200000*width}">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="#018f0e" ratio="0" alpha="1"/>                
+				<s:GradientEntry color="#00720b" ratio="1" alpha="1"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+
+</s:SkinnableContainer>

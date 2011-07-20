@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Christophe Coenraets, http://coenraets.org -->
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		destructionPolicy="never">
+	
+	<fx:Script>
+		<![CDATA[
+			
+			import mx.collections.ArrayCollection;
+			
+			import spark.events.IndexChangeEvent;
+
+			[Embed("assets/phone.png")]
+			private var phoneIcon:Class;
+			
+			[Bindable]
+			protected var alerts:ArrayCollection = new ArrayCollection([
+				{type: "tel", name: "Call Financial Advisor", details: "617-219-2000", icon: phoneIcon},
+				{type: "http", name: "Adobe posts strong results", details: "http://finance.google.com"},
+				{type: "http", name: "Dow and S&P down for second week", details: "http://bloomberg.com"}]);
+
+			protected function list_changeHandler(event:IndexChangeEvent):void
+			{
+				var action:Object = list.selectedItem;
+				list.selectedIndex = -1;
+				switch (action.type)
+				{
+					case "tel":
+						navigateToURL(new URLRequest("tel:" + action.details));
+						break;
+					
+					case "http":
+						navigateToURL(new URLRequest(action.details));
+						break;
+				}	
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:List id="list" top="0" bottom="0" left="0" right="0" dataProvider="{alerts}" change="list_changeHandler(event)">
+		<s:itemRenderer>
+			<fx:Component>
+				<s:IconItemRenderer
+					labelField="name" 
+					messageField="details" 
+					decorator="{data.icon}"
+					height="70"/>
+			</fx:Component>
+		</s:itemRenderer>
+	</s:List>
+	
+</s:View>
