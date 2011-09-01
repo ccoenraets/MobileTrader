@@ -17,6 +17,7 @@
 			{
 				FlexGlobals.topLevelApplication.roomURL = roomURL.text;
 				persistenceManager.setProperty("roomURL", roomURL.text);
+				persistenceManager.save();
 			}
 
 		]]>
@@ -33,6 +34,8 @@
 	<s:Label text="Collaboration Services Room URL:" top="20" left="20" right="20"/>
 
 	<s:TextInput id="roomURL" width="100%" change="save()"/>
+	
+	<s:Image width="100%" height="100%" fillMode="scale" scaleMode="stretch"/>
 	
 	<s:Label width="100%">
 		<s:text>
